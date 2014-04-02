@@ -177,45 +177,6 @@ def computeTheta():
     theta_doc = [float(val)/tot for val in n_doc]
     theta.append(theta_doc)
   return theta
-    
-
-bullshit = """
-def computeTheta():
-  # Returns a KxV matrix of Theta vectors. Each row corresponds to theta vector for one topic.
-  theta = []
-  for j in xrange(K):
-    theta_j = [0.0]*V
-    sigma_q = sum(q[j])
-    denom = float(sigma_q) + sum_beta
-    for w_i in xrange(V):
-      theta_j[w_i] = (q[j][w_i] + beta[w_i])/denom
-    theta.append(theta_j)
-    print sum(theta_j)
-  return theta
-
-
-def computeP(theta, x):
-  # Returns MxK array. Each row corresponds to a particular document.
-  p = []
-  for doc in x:
-    num_words = (doc.sum())
-    log_factorial_part = math.log(math.factorial(num_words))
-    for i in xrange(doc.getnnz()):         # THis 'i' is different from the notation in notes.
-      w_i = doc.indices[i]
-      log_factorial_part -= math.log(math.factorial(doc[0, w_i]))
-    log_p_doc = [log_factorial_part]*K
-    for j in xrange(K):
-      for i in xrange(doc.getnnz()):
-        w_i = doc.indices[i]
-        try:
-          log_p_doc[j] += math.log(theta[j][w_i])*doc[0, w_i]
-        except OverflowError as e:
-          print log_p_doc[j], theta[j][w_i], doc[0, w_i]
-          raise e
-    p.append([math.e**val for val in log_p_doc])
-  return p
-"""
-
 
 def computeTopWords(words):
   # For each topic, prints the top 25 words in that topic.
