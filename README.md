@@ -1,3 +1,3 @@
 Topic-Modeling-with-LDA
 =======================
-An implementation of topic modeling with LDA in python. 
+An implementation of LDA(Latent Dirichlet allocation) to topic model in python. 
